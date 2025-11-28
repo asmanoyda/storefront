@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Companies Table</title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% include 'header.html' %}
+<br>
+<h1>Companys Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Secotor</th>
+                <th>Location</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if companys %}
+                {% for company in companys %}
+                <td>
+                    {{company.name}}
+                </td>
+                <td>
+                    {{company.sector}}
+                </td>
+                <td>
+                    {{company.location}}
+                </td>
+                <td>
+                    <a href="{% url 'co_name' company.id %}">ℹ️</a>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'delete-company' company.id %}">🗑️</a>
+
+                </td>
+
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+
+    </table>
+    <a href="{% url 'add-company' %}">go to add new company</a>
+    {% include 'footer.html' %}
+
+
+</body>
+
+</html>

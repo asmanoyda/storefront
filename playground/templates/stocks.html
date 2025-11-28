@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stocks Table</title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% include 'header.html' %}
+<br>
+<h1>Stocks table</h1>
+
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Sector</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if stocks %}
+                {% for stock in stocks %}
+                <td>
+                    {{stock.name}}
+                </td>
+                <td>
+                    {{stock.price}}
+                </td>
+                <td>
+                    {{stock.sector}}
+                </td>
+                <td>
+                    <a href="{% url 's_name' stock.id %}">ℹ️</a>
+
+                </td>
+                   <td>
+                    <a href="{% url 'delete-stock' stock.id %}">🗑️</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+    </table>
+        <a href="{% url 'add-stock' %}">go to add new stock</a>
+
+</body>
+      {% include 'footer.html' %}
+
+</html>

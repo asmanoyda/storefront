@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add people </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+
+
+<h1>Add people</h1>
+
+<form action={%url 'add-people-save' %} method="post">
+    {% csrf_token %}
+    Name:<br>
+    <input name="name">
+    <br><br>
+    Surname:<br>
+    <input name="surname">
+    <br><br>
+    Age:<br>
+    <input name="age">
+    <br><br>
+    <input type="submit" value="Save">
+
+</form>
+{% include 'footer.html' %}

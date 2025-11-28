@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add company </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+
+<h1>Add company</h1>
+
+<form action={%url 'add-company-save' %} method="post">
+    {% csrf_token %}
+    Name:<br>
+    <input name="name">
+    <br><br>
+    Sector:<br>
+    <input name="sector">
+    <br><br>
+    Location:<br>
+    <input name="location">
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+{% include 'footer.html' %}

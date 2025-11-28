@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peoples Table</title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% include 'header.html' %}
+<br>
+<h1>Peoples Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Can vote</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              
+                {% for people in peoples %}
+                <td>
+                    {{forloop.counter}}
+                </td>
+                <td>
+                    {{people.name}}
+                </td>
+                  <td>
+                    {{people.surname}}
+                </td>
+                <td>
+                    {{people.age}}
+                </td>
+                <td>
+                    {%if people.age >= 18 %}
+                     👍 
+                    {%else%}
+                    👎
+                   {% endif %}
+                </td>
+                  <td>
+                    <a href="{% url 'delete-people' people.id %}">🗑️</a>
+
+                </td>
+
+            </tr>
+            
+               {% endfor %}
+
+        </tbody>
+    </table>
+        <a href="{% url 'add-people' %}">go to add new people</a>
+    {% include 'footer.html' %}
+</body>
+
+</html>

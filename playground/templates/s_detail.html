@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        {{ stock.name }} Stock
+
+    </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Sector</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <td>
+                {{ stock.name }}
+            </td>
+            <td>
+
+                {{ stock.price }}
+            </td>
+            <td>
+
+                {{ stock.sector }}
+            </td>
+            </tr>
+        </tbody>
+        <a href="{% url 'stocks' %}">go back to stocks page</a>
+          {% include 'footer.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cars Table</title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+<br>
+<h1>Cars table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                {% if cars %}
+                {% for car in cars %}
+                <td>{{car.model}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.color}}</td>
+                <td>
+                    <a href="{% url 'c_name' car.id %}">ℹ️</a>
+
+                </td>
+                <td>
+                    <a href="{% url 'delete-car' car.id %}">🗑️</a>
+
+                </td>
+            </tr>
+
+
+
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'add-car' %}">go to add new car</a>
+
+
+
+    {% include 'footer.html' %}
+

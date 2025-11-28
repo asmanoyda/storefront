@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+           {{car.model}} car
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{car.model}}
+                </td>
+                <td>
+                    {{car.year}}
+                </td>
+                <td>
+                    {{car.color}}
+                </td>
+
+            </tr>
+        </tbody>
+
+        <a href="{% url 'cars' %}">go back to cars page</a>
+
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Teachers Table
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+
+<br>
+<h1>Teachers Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if teachers %}
+                {% for teacher in teachers %}
+                <td>
+                    {{teacher.name}}
+                </td>
+                <td>
+                    {{teacher.subject}}
+                </td>
+    
+                 <td>
+                    <a href="{% url 't_name' teacher.id %}">ℹ️</a>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'delete-teacher' teacher.id %}">🗑️</a>
+
+                </td> 
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+    </table>
+    <p>
+    
+          
+    </p>
+    <a href="{% url 'add-teacher' %}">go to add new teacher</a>
+</body>
+{% include 'footer.html' %}
+
+</html>

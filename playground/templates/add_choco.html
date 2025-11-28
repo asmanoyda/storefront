@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add chocolate </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+
+<h1>Add chocolate</h1>
+
+<form action={%url 'add-choco-save' %} method="post">
+    {% csrf_token %}
+    Brand:<br>
+    <input name="brand">
+    <br><br>
+    Type:<br>
+    <input name="type">
+    <br><br>
+    Cocoa_percentage:<br>
+    <input name="cocoa_percentage">
+    <br><br>
+    Price:<br>
+    <input name="price">
+    <br><br>
+    Sugar_percentage:<br>
+    <input name="sugar_percentage">
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+{% include 'footer.html' %}

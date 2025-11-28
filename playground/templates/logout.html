@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+       Logout
+    </title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+<br>
+
+<body>
+    <h2>Logout Successful</h2>
+    <p>You have been successfully logged out.thank you for visiting! We hope to see you soon,simply log back in</p>
+
+    <br>
+    <div class="center-btn">
+        <a href="{% url 'login_user' %}" class="btn">Log In Again ⏻</a>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

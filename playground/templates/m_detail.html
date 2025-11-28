@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+     {{ member.firstname }} member
+
+    </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>LastName</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+
+                {{ member.firstname }}
+            </td>
+            <td>
+
+                {{ member.lastname }}
+            </td>
+            <a href="{% url 'members' %}">go back to members page</a>
+              {% include 'footer.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Cold_drinks Table
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+
+<br>
+<h1>Cold_drinks Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Flavor</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if cold_drinks %}
+                {% for cold_drink in cold_drinks %}
+                <td>
+                    {{cold_drink.name}}
+                </td>
+                <td>
+                    {{cold_drink.brand}}
+                </td>
+              
+                <td>
+                    {{cold_drink.flavor}}
+                </td>
+                <td>
+                    <a href="{% url 'cd_name' cold_drink.id %}">ℹ️</a>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'delete-cold-drink' cold_drink.id %}">🗑️</a>
+
+                </td>
+
+
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+    </table>
+    
+<a href="{% url 'add-cold_drink' %}">go to add new cold_drink</a>
+
+
+
+</body>
+{% include 'footer.html' %}
+
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chocos Table</title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% include 'header.html' %}
+<br>
+<h1>Chocos Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Cocoa_percentage</th>
+                <th>Price</th>
+                <th>Sugar_percentage</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if chocos %}
+                {% for choco in chocos %}
+                <td>
+                    {{choco.brand}}
+                </td>
+                <td>
+                    {{choco.type}}
+                </td>
+                <td>
+                    {{choco.cocoa_percentage}}
+                </td>
+                <td>
+                    {{choco.price}}
+                </td>
+                <td>
+                    {{choco.sugar_percentage}}
+                </td>
+                <td>
+                    <a href="{% url 'ch_name' choco.id %}">ℹ️</a>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'delete-choco' choco.id %}">🗑️</a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+    </table>
+    <p>{{text|truncatechars:80}}</p>
+    <a href="{% url 'add-choco' %}">go to add new choco</a>
+    {% include 'footer.html' %}
+
+
+</body>
+
+</html>

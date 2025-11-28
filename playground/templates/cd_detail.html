@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+        {{ cold_drink.name }} cold_drink
+    </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Flavor</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <td>
+                {{ cold_drink.name }}
+            </td>
+            <td>
+
+                {{ cold_drink.brand }}
+            </td>
+            <td>
+
+                {{ cold_drink.flavor }}
+            </td>
+            </tr>
+        </tbody>
+        <a href="{% url 'cold_drinks' %}">go back to cold_drinks page</a>
+
+        {% include 'footer.html' %}
+
+</body>
+
+</html>

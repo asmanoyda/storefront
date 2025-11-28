@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+           {{company.name }} company
+    
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sector</th>
+                <th>Location</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+
+            <td>
+
+                {{company.name }}
+            </td>
+            <td>
+
+                {{ company.sector }}
+            </td>
+            <td>
+                {{ company.location }}
+            </td>
+        
+            </tr>
+        </tbody>
+        <a href="{% url 'companys' %}">go back to companys page</a>
+          {% include 'footer.html' %}
+
+</body>
+
+</html>

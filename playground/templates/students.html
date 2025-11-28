@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students Table</title>
+</head>
+<head>
+    <title>
+        <!-- {{ all_brand_name }} Chocolate -->
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+
+<br>
+<h1>Students Table</h1>
+
+<body>
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Major</th>
+                <th>Grades</th>
+                <th>Info</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if students %}
+                {% for student in students %}
+                <td>
+                    {{student.name}}
+                </td>
+                <td>
+                    {{student.age}}
+                </td>
+                <td>
+                    {{student.major}}
+                </td>
+                <td>
+                    {{student.grades}}
+                </td>
+                <td>
+                    <a href="{% url 'st_name' student.id %}">ℹ️</a>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'delete-student' student.id %}">🗑️</a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <li>Sorry, no records found </li>
+            {% endif %}
+
+        </tbody>
+    </table>
+    <p>
+    
+          
+    </p>
+    <a href="{% url 'add-student' %}">go to add new student</a>
+</body>
+{% include 'footer.html' %}
+
+</html>

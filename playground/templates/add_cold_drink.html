@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add cold_drink </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+
+<h1>Add cold_drink</h1>
+
+<form action={%url 'add-cold_drink-save' %} method="post">
+    {% csrf_token %}
+    Name:<br>
+    <input name="name">
+    <br><br>
+    Brand:<br>
+    <input name="brand">
+    <br><br>
+    Flavor:<br>
+    <input name="flavor">
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+{% include 'footer.html' %}

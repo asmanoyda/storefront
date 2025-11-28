@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Registration
+    </title>
+</head>
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
+<br>
+
+<h2>User Registration</h2>
+<body>
+<form method="POST" action="/user/register/">
+    {% csrf_token %}
+    
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Mobile Number:</label><br>
+    <input type="text" name="mobile_no" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+<br>
+<a href="{% url 'login_user' %}">Already have account? Login</a>
+</body>
+</html>
+  {% include 'footer.html' %}

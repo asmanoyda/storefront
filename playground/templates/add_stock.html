@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add stock </title>
+</head>
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+
+
+
+<h1>Add stock</h1>
+
+<form action={%url 'add-stock-save' %} method="post">
+    {% csrf_token %}
+    Name:<br>
+    <input name="name">
+    <br><br>
+    Price:<br>
+    <input name="price">
+    <br><br>
+    Sector:<br>
+    <input name="sector">
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+{% include 'footer.html' %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        {{ choco.brand }} choco
+    </title>
+</head>
+
+
+<link rel="stylesheet" href={% static 'templates.css' %}>
+{% include 'header.html' %}
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Cocoa_percentage</th>
+                <th>Price</th>
+                <th>Sugar_percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <td>
+
+                {{ choco.brand }}
+            </td>
+            <td>
+
+                {{ choco.type }}
+            </td>
+            <td>
+                {{ choco.cocoa_percentage }}
+            </td>
+            <td>
+
+                {{ choco.price }}
+            </td>
+              <td>
+
+                {{ choco.sugar_percentage}}
+            </td>
+            </tr>
+        </tbody>
+        <a href="{% url 'chocos' %}">go back to chocos page</a>
+    {% include 'footer.html' %}
+</body>
+
+
+</html>
